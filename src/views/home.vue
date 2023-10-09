@@ -92,8 +92,8 @@ const toURl = (url:string)=>{
             <p>Telegram Official</p>
           </div>
           <div class="top_cont">
-            <p class="link" @click="toURl('https://t.me/looteryofficial61')">https://t.me/looteryofficial61</p>
-            <img src="@/assets/home/copy.svg" alt="" class="copy" @click="copy('https://t.me/looteryofficial61')">
+            <p class="link" @click="toURl('https://t.me/lottery61games888')">https://t.me/lottery61games888</p>
+            <img src="@/assets/home/copy.svg" alt="" class="copy" @click="copy('https://t.me/lottery61games888')">
           </div>
         </div>
         <div class="contenttitle_box link_box add_margin">
