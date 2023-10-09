@@ -20,6 +20,9 @@ const copy = (str:any)=>{
      copyDomText(str);
      showToast("copy suuess")
 }
+const toURl = (url:string)=>{
+  window.open(url,"_lank")
+}
 </script>
 
 <template>
@@ -54,7 +57,7 @@ const copy = (str:any)=>{
             <p>Registration link</p>
           </div>
           <div class="top_cont">
-            <p class="link">https://www.61lottery.com/pages/login/index?sharecode=908135</p>
+            <p class="link" @click="toURl('https://www.61lottery.com/pages/login/index?sharecode=908135')">https://www.61lottery.com/pages/login/index?sharecode=908135</p>
             <img src="@/assets/home/copy.svg" alt="" class="copy" @click="copy('https://www.61lottery.com/pages/login/index?sharecode=908135')">
           </div>
           <div class="bottom_cont">
@@ -80,7 +83,7 @@ const copy = (str:any)=>{
             <p>Registration link</p>
           </div>
           <div class="top_cont">
-            <p class="link">https://www.61lottery.com/pages/login/index?sharecode=908135</p>
+            <p class="link" @click="toURl('https://www.61lottery.com/pages/login/index?sharecode=908135')">https://www.61lottery.com/pages/login/index?sharecode=908135</p>
             <img src="@/assets/home/copy.svg" alt="" class="copy" @click="copy('https://www.61lottery.com/pages/login/index?sharecode=90813')">
           </div>
         </div>
@@ -89,7 +92,7 @@ const copy = (str:any)=>{
             <p>Telegram Official</p>
           </div>
           <div class="top_cont">
-            <p class="link">https://t.me/looteryofficial61</p>
+            <p class="link" @click="toURl('https://t.me/looteryofficial61')">https://t.me/looteryofficial61</p>
             <img src="@/assets/home/copy.svg" alt="" class="copy" @click="copy('https://t.me/looteryofficial61')">
           </div>
         </div>
