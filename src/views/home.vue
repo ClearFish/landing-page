@@ -45,7 +45,7 @@ const toURl = (url:string)=>{
     </div>
     <div class="game_box">
       <ul>
-        <li v-for="(item,index) in gameList" :key="index" :style="index>2?'width:49%;margin-top:-10px':'width:33%'">
+        <li v-for="(item,index) in gameList" :key="index" :style="index>2?'width:49%;margin-top:-10px':'width:33%'" @click="toURl('https://www.61lottery.com/pages/login/index?sharecode=1956240')">
           <img :src="item.img" alt="">
         </li>
       </ul>
@@ -91,7 +91,10 @@ const toURl = (url:string)=>{
           <video
             src="@/assets/video-ad.mp4"
             width="100%"
+            muted
             autoplay
+            loop
+            controls
           />
         </div>
 
