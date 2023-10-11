@@ -57,13 +57,44 @@ const toURl = (url:string)=>{
             <p>Registration link</p>
           </div>
           <div class="top_cont">
-            <p class="link" @click="toURl('https://www.61lottery.com/pages/login/index?sharecode=908135')">https://www.61lottery.com/pages/login/index?sharecode=908135</p>
-            <img src="@/assets/home/copy.svg" alt="" class="copy" @click="copy('https://www.61lottery.com/pages/login/index?sharecode=908135')">
+            <p class="link" @click="toURl('https://www.61lottery.com/pages/login/index?sharecode=1956240')">https://www.61lottery.com/pages/login/index?sharecode=1956240</p>
+            <img src="@/assets/home/copy.svg" alt="" class="copy" @click="copy('https://www.61lottery.com/pages/login/index?sharecode=1956240')">
           </div>
           <div class="bottom_cont">
             <p>61lottery supports <span class="red_word">Level 6</span> offline lottery, welcome everyone to join our agent team.</p>
           </div>
         </div>
+
+        <div class="contenttitle_box link_box add_margin">
+          <div class="title_box" >
+            <p>Telegram Official</p>
+          </div>
+          <div class="top_cont">
+            <p class="link" @click="toURl('https://t.me/lottery61games888')">https://t.me/lottery61games888</p>
+            <img src="@/assets/home/copy.svg" alt="" class="copy" @click="copy('https://t.me/lottery61games888')">
+          </div>
+        </div>
+
+        <div class="contenttitle_box link_box add_margin">
+          <div class="title_box" >
+            <p>Telegram Official</p>
+          </div>
+          <div class="top_cont">
+            <p class="link" @click="toURl('https://t.me/lottery61vip888')">https://t.me/lottery61vip888</p>
+            <img src="@/assets/home/copy.svg" alt="" class="copy" @click="copy('https://t.me/lottery61vip888')">
+          </div>
+        </div>
+
+        <!-- video -->
+
+        <div class="video_box">
+          <video
+            src="@/assets/video-ad.mp4"
+            width="100%"
+            autoplay
+          />
+        </div>
+
         <div class="contenttitle_box link_box add_margin">
           <div class="title_box big_title" style="width:158px">
             <p>Discount Information</p>
@@ -78,24 +109,17 @@ const toURl = (url:string)=>{
             <div class="addus">Join us now!</div>
           </div>
         </div>
+
         <div class="contenttitle_box link_box add_margin">
           <div class="title_box" >
             <p>Registration link</p>
           </div>
           <div class="top_cont">
-            <p class="link" @click="toURl('https://www.61lottery.com/pages/login/index?sharecode=908135')">https://www.61lottery.com/pages/login/index?sharecode=908135</p>
-            <img src="@/assets/home/copy.svg" alt="" class="copy" @click="copy('https://www.61lottery.com/pages/login/index?sharecode=90813')">
+            <p class="link" @click="toURl('https://www.61lottery.com/pages/login/index?sharecode=1956240')">https://www.61lottery.com/pages/login/index?sharecode=1956240</p>
+            <img src="@/assets/home/copy.svg" alt="" class="copy" @click="copy('https://www.61lottery.com/pages/login/index?sharecode=1956240')">
           </div>
         </div>
-        <div class="contenttitle_box link_box add_margin">
-          <div class="title_box" >
-            <p>Telegram Official</p>
-          </div>
-          <div class="top_cont">
-            <p class="link" @click="toURl('https://t.me/lottery61games888')">https://t.me/lottery61games888</p>
-            <img src="@/assets/home/copy.svg" alt="" class="copy" @click="copy('https://t.me/lottery61games888')">
-          </div>
-        </div>
+
         <div class="contenttitle_box link_box add_margin">
             <div class="title_box big_title" style="width:158px">
               <p>Reward Pyramid Mode</p>
@@ -419,6 +443,9 @@ const toURl = (url:string)=>{
             }
           }
         }
+      }
+      .contenttitle_box {
+        margin: 17px 0;
       }
       .add_margin {
         margin-top: 30px;
