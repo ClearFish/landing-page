@@ -28,7 +28,7 @@ html,body {
   background: rgb(241, 241, 241);
   /* overflow:hidden; */
 }
-ul,li,p,div,a,span {
+ul,li,p,div,a,span,h1,h2 {
   padding: 0;
   margin: 0;
 }
