@@ -4,6 +4,7 @@ import Land from "@/views/land.vue"
 import Xo from "@/views/xo.vue"
 import Google from "@/views/googleDownload.vue"
 import Jdbvip from "@/views/jdbvip.vue"
+import KY from "@/views/ky.vue"
 const routes : Array<RouteRecordRaw> = [
     {
         path: '/',
@@ -35,6 +36,11 @@ const routes : Array<RouteRecordRaw> = [
         path:"/jdbvip",
         name:"jdbvip",
         component:Jdbvip
+    },
+    {
+        path:"/ky",
+        name:"ky",
+        component:KY
     },
 ]
 
