@@ -13,73 +13,73 @@
         <div class="item_con">
             <div class="top_title">
                 <img :src="bell" alt="" class="bell">
-                <p class="word">If the website doesn’t open or shows cache issues, <span class="add_color">try installing different APPs</span> and use the one that works.</p>
+                <p class="word">{{ $t('content1') }}, <span class="add_color">{{ $t('content2') }}</span> {{ $t('content3') }}.</p>
             </div>
             <div class="web_lsits">
                 <div class="web_item" v-for="(item,index) in webLists" :key="index">
                     <input type="text" v-model="item.name"/>
-                    <div class="check_btn install_btn">INSTALL</div>
-                    <div class="check_btn">VISIT</div>
+                    <div class="check_btn install_btn">{{ $t('INSTALL') }}</div>
+                    <div class="check_btn">{{ $t('VISIT') }}</div>
                 </div>
             </div>
         </div>
         <div class="item_con">
-            <p class="title">ZTLGAMES: The Trusted Platform</p>
-            <p class="sub_title">Trusted by Millions 丨 Since 2020</p>
+            <p class="title">{{ $t('word1') }}</p>
+            <p class="sub_title">{{ $t('word2') }}</p>
             <div class="btn_box">
-                <div class="installc_btn">INSTALL APP</div>
-                <div class="installc_btn tutol_btn">tutorial</div>
+                <div class="installc_btn">{{ $t('INSTALL_APP') }}</div>
+                <div class="installc_btn tutol_btn">{{ $t('tutorial') }}</div>
             </div>
         </div>
         <div class="item_con">
             <div class="word_title">
-                <p class="title">Why Choose ZTLGAME as Your Gaming Partner?</p>
-                <p class="add_color">Industry-Leading Commission Rates Up to 1%</p>
+                <p class="title">{{ $t('word4') }}</p>
+                <p class="add_color">{{ $t('word5') }}</p>
             </div>
-            <p class="content">Join thousands of successful partners who made ZTLGame their platform of choice.  Enjoy exclusive benefits, expert support, and the highest commission rates in the industry. </p>
+            <p class="content">{{ $t('word6') }}</p>
              <div class="word_title add_margin">
-                <p class="title">Security & Reliability You Can Trust</p>
+                <p class="title">{{ $t('word7') }}</p>
             </div>
-            <p class="content">With advanced security infrastructure and a proven track record, ZTLGame guarantees a gaming experience that is both enjoyable and completely secure. Our platform serves millions of satisfied users across Asia with a 99.9% uptime guarantee. </p>
+            <p class="content">{{ $t('word8') }}</p>
             <div class="word_title add_margin">
-                <p class="title">Bank-Level Data Protection</p>
+                <p class="title">{{ $t('word9') }}</p>
             </div>
-            <p class="content">Your privacy is our top priority. We use militarygrade encryption and adhere to international security standards to protect your personal and financial information. Our dedicated security team operates 24/7 to keep your data safe and confidential.</p>
+            <p class="content">{{ $t('word10') }}</p>
         </div>
         <div class="item_con">
             <div class="word_title">
-                <p class="title">Premium User Experience</p>
+                <p class="title">{{ $t('word11') }}</p>
             </div>
-            <p class="content">Enjoy gaming like never before with our intuitiveinterface, designed by UI/UX experts. Every feature is crafted for seamless navigation and effortless access to all platform functions.</p>
+            <p class="content">{{ $t('word12') }}</p>
             <div class="word_title add_margin">
-                 <p class="title">Award-Winning Customer Support</p>
+                 <p class="title">{{ $t('word13') }}</p>
             </div>
-            <p class="content">Our multilingual support team is available 24/7. With an average response time of under 30 seconds and a 98% satisfaction rate, we guarantee your questions are answered quickly and professionally.</p>
+            <p class="content">{{ $t('word14') }}</p>
             <div class="word_title add_margin">
-                <p class="title">Start Your Journey in 3 Simple Steps</p>
+                <p class="title">{{ $t('word15') }}</p>
             </div>
-            <p class="content">Becoming a ZTLGame partner is easier than ever. Whether you're new to gaming or a seasoned player, our streamlined process lets you start earning in just minutes.</p>
+            <p class="content">{{ $t('word16') }}</p>
             <div class="word_title add_margin">
-                <p class="title">Quick Registration Guide</p>
+                <p class="title">{{ $t('word17') }}</p>
             </div>
             <div class="content_item">
                 <div class="item">
                     <p class="label">1</p>
                     <div class="value">
-                        <p class="value_c">Visit our official website</p>
-                        <p class="value_c"><span class="add_color">Ztl.game</span> and click "Partner Program"</p>
+                        <p class="value_c">{{ $t('word18') }}</p>
+                        <p class="value_c"><span class="add_color">Ztl.game</span> {{ $t('word19') }}</p>
                     </div>
                 </div>
                 <div class="item">
                     <p class="label">2</p>
                     <div class="value">
-                        <p class="value_c">Generate your unique invitation link in the dashboard</p>
+                        <p class="value_c">{{ $t('word20') }}</p>
                     </div>
                 </div>
                 <div class="item">
                     <p class="label">3</p>
                     <div class="value">
-                        <p class="value_c">Share your link with friends and start earning instant commissions-no hide fees, no minimum withdrawal.</p>
+                        <p class="value_c">{{ $t('word21') }}.</p>
                     </div>
                 </div>
             </div>  
