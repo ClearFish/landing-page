@@ -5,6 +5,7 @@ import Xo from "@/views/xo.vue"
 import Google from "@/views/googleDownload.vue"
 import Jdbvip from "@/views/jdbvip.vue"
 import KY from "@/views/ky.vue"
+import ZTL from "@/views/ztl.vue"
 const routes : Array<RouteRecordRaw> = [
     {
         path: '/',
@@ -42,6 +43,12 @@ const routes : Array<RouteRecordRaw> = [
         name:"ky",
         component:KY
     },
+    {
+        path:"/ztl",
+        name:"ztl",
+        component:ZTL
+        
+    }
 ]
 
 const router = createRouter({
