@@ -1,104 +1,106 @@
 <template>
     <div class="big_box">
-        <div class="top_heaer">
-            <div class="top">
-                <img :src="Logo" alt="" class="logo">
-                <img :src="US" alt="" class="lang" @click="showLangChose">
-            </div>
-            <div class="check_box">
-                <input type="text" v-model="urlValue" :placeholder="$t('Enter_to_verify')"/>
-                <div class="check_btn" @click="checkUrl">{{ $t('CHECK') }}</div>
-            </div>
-        </div>
-        <div class="item_con">
-            <div class="top_title">
-                <img :src="bell" alt="" class="bell">
-                <p class="word">{{ $t('content1') }}, <span class="add_color">{{ $t('content2') }}</span> {{ $t('content3') }}.</p>
-            </div>
-            <div class="web_lsits">
-                <div class="web_item" v-for="(item,index) in webLists" :key="index">
-                    <input type="text" v-model="item.domain" @click="copyDomain(item)"/>
-                    <div class="check_btn install_btn" @click="toInstall(item)">{{ $t('INSTALL') }}</div>
-                    <div class="check_btn" @click="toVisit(item)">{{ $t('VISIT') }}</div>
+        <div class="container">
+            <div class="top_heaer">
+                <div class="top">
+                    <img :src="Logo" alt="" class="logo">
+                    <img :src="US" alt="" class="lang" @click="showLangChose">
+                </div>
+                <div class="check_box">
+                    <input type="text" v-model="urlValue" :placeholder="$t('Enter_to_verify')"/>
+                    <div class="check_btn" @click="checkUrl">{{ $t('CHECK') }}</div>
                 </div>
             </div>
-        </div>
-        <div class="item_con">
-            <p class="title">{{ $t('word1') }}</p>
-            <p class="sub_title">{{ $t('word2') }}</p>
-            <div class="btn_box">
-                <div class="installc_btn" @click="installApp">{{ $t('INSTALL_APP') }}</div>
-                <div class="installc_btn tutol_btn">{{ $t('tutorial') }}</div>
-            </div>
-        </div>
-        <div class="item_con">
-            <div class="word_title">
-                <p class="title">{{ $t('word4') }}</p>
-                <p class="add_color">{{ $t('word5') }}</p>
-            </div>
-            <p class="content">{{ $t('word6') }}</p>
-             <div class="word_title add_margin">
-                <p class="title">{{ $t('word7') }}</p>
-            </div>
-            <p class="content">{{ $t('word8') }}</p>
-            <div class="word_title add_margin">
-                <p class="title">{{ $t('word9') }}</p>
-            </div>
-            <p class="content">{{ $t('word10') }}</p>
-        </div>
-        <div class="item_con">
-            <div class="word_title">
-                <p class="title">{{ $t('word11') }}</p>
-            </div>
-            <p class="content">{{ $t('word12') }}</p>
-            <div class="word_title add_margin">
-                 <p class="title">{{ $t('word13') }}</p>
-            </div>
-            <p class="content">{{ $t('word14') }}</p>
-            <div class="word_title add_margin">
-                <p class="title">{{ $t('word15') }}</p>
-            </div>
-            <p class="content">{{ $t('word16') }}</p>
-            <div class="word_title add_margin">
-                <p class="title">{{ $t('word17') }}</p>
-            </div>
-            <div class="content_item">
-                <div class="item">
-                    <p class="label">1</p>
-                    <div class="value">
-                        <p class="value_c">{{ $t('word18') }}</p>
-                        <p class="value_c"><span class="add_color">Ztl.game</span> {{ $t('word19') }}</p>
+            <div class="item_con">
+                <div class="top_title">
+                    <img :src="bell" alt="" class="bell">
+                    <p class="word">{{ $t('content1') }}, <span class="add_color">{{ $t('content2') }}</span> {{ $t('content3') }}.</p>
+                </div>
+                <div class="web_lsits">
+                    <div class="web_item" v-for="(item,index) in webLists" :key="index">
+                        <input type="text" v-model="item.domain" @click="copyDomain(item)"/>
+                        <div class="check_btn install_btn" @click="toInstall(item)">{{ $t('INSTALL') }}</div>
+                        <div class="check_btn" @click="toVisit(item)">{{ $t('VISIT') }}</div>
                     </div>
                 </div>
-                <div class="item">
-                    <p class="label">2</p>
-                    <div class="value">
-                        <p class="value_c">{{ $t('word20') }}</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <p class="label">3</p>
-                    <div class="value">
-                        <p class="value_c">{{ $t('word21') }}.</p>
-                    </div>
-                </div>
-            </div>  
-        </div>
-        <van-popup :show="show" round custom-style="width: 100%">
-            <div class="lang_lists">
-                <div class="lang_item" v-for="(item,index) in langLists" :key="index" @click="choseLang(item)">
-                    <div class="name_v">
-                        <img :src="item.icon" alt="">
-                        <p class="name">{{item.title}}</p>
-                    </div>
-                    <van-icon name="success" color="#0454FD" v-if="item.value == language"/>
-                </div>
-                 <div class="bottom_btn">
-                    <div class="btn" @click="show=false">{{$t('cancel')}}</div>
-                    <div class="btn sure_btn" @click="confirmLang">{{$t('confirm')}}</div>
+            </div>
+            <div class="item_con">
+                <p class="title">{{ $t('word1') }}</p>
+                <p class="sub_title">{{ $t('word2') }}</p>
+                <div class="btn_box">
+                    <div class="installc_btn" @click="installApp">{{ $t('INSTALL_APP') }}</div>
+                    <div class="installc_btn tutol_btn">{{ $t('tutorial') }}</div>
                 </div>
             </div>
-        </van-popup>
+            <div class="item_con">
+                <div class="word_title">
+                    <p class="title">{{ $t('word4') }}</p>
+                    <p class="add_color">{{ $t('word5') }}</p>
+                </div>
+                <p class="content">{{ $t('word6') }}</p>
+                <div class="word_title add_margin">
+                    <p class="title">{{ $t('word7') }}</p>
+                </div>
+                <p class="content">{{ $t('word8') }}</p>
+                <div class="word_title add_margin">
+                    <p class="title">{{ $t('word9') }}</p>
+                </div>
+                <p class="content">{{ $t('word10') }}</p>
+            </div>
+            <div class="item_con">
+                <div class="word_title">
+                    <p class="title">{{ $t('word11') }}</p>
+                </div>
+                <p class="content">{{ $t('word12') }}</p>
+                <div class="word_title add_margin">
+                    <p class="title">{{ $t('word13') }}</p>
+                </div>
+                <p class="content">{{ $t('word14') }}</p>
+                <div class="word_title add_margin">
+                    <p class="title">{{ $t('word15') }}</p>
+                </div>
+                <p class="content">{{ $t('word16') }}</p>
+                <div class="word_title add_margin">
+                    <p class="title">{{ $t('word17') }}</p>
+                </div>
+                <div class="content_item">
+                    <div class="item">
+                        <p class="label">1</p>
+                        <div class="value">
+                            <p class="value_c">{{ $t('word18') }}</p>
+                            <p class="value_c"><span class="add_color">Ztl.game</span> {{ $t('word19') }}</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p class="label">2</p>
+                        <div class="value">
+                            <p class="value_c">{{ $t('word20') }}</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <p class="label">3</p>
+                        <div class="value">
+                            <p class="value_c">{{ $t('word21') }}.</p>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <van-popup :show="show" round custom-style="width: 100%">
+                <div class="lang_lists">
+                    <div class="lang_item" v-for="(item,index) in langLists" :key="index" @click="choseLang(item)">
+                        <div class="name_v">
+                            <img :src="item.icon" alt="">
+                            <p class="name">{{item.title}}</p>
+                        </div>
+                        <van-icon name="success" color="#0454FD" v-if="item.value == language"/>
+                    </div>
+                    <div class="bottom_btn">
+                        <div class="btn" @click="show=false">{{$t('cancel')}}</div>
+                        <div class="btn sure_btn" @click="confirmLang">{{$t('confirm')}}</div>
+                    </div>
+                </div>
+            </van-popup>
+        </div>
     </div>
 </template>
 <script setup lang="ts">
@@ -175,6 +177,9 @@ const installApp = ()=>{
     a.href = jumpUrl;
     a.click();
 }
+const toInstall = (item)=>{
+
+}
 onMounted(()=>{
     getList()
     getSite()
@@ -200,6 +205,10 @@ onMounted(()=>{
     padding: 0 16px;
     box-sizing: border-box;
     padding-bottom: 34px;
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
     .top_heaer {
         padding-top: 35px;
         .top {
@@ -465,6 +474,61 @@ onMounted(()=>{
                 background: #3B7FF8;
                 border: none;
             }
+        }
+    }
+}
+@media screen and (min-width: 600px) {
+    .big_box {
+        .container {
+            .top_heaer {
+                .top {
+                    .logo {
+                        width: 280px;
+                        height: 52px;
+                    }
+                    .lang {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+                .check_box {
+                    .check_btn {
+                        cursor: pointer;
+                        width: 120px;
+                        &:hover {
+                            transform: scale(1.02);
+                        }
+                    }
+                }
+            }
+            .item_con {
+                .btn_box {
+                    .installc_btn {
+                        cursor: pointer;
+                        &:hover {
+                                transform: scale(1.02);
+                            }
+                    }
+                }
+                .web_lsits {
+                    .web_item {
+                        input {
+                            flex: 1;
+                            cursor: pointer;
+                        }
+                        .check_btn  {
+                            width: 120px;
+                            cursor: pointer;
+                            &:hover {
+                                transform: scale(1.02);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        :deep(.van-popup) {
+            max-width: 580px;
         }
     }
 }
