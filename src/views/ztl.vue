@@ -6,7 +6,7 @@
                 <img :src="US" alt="" class="lang" @click="showLangChose">
             </div>
             <div class="check_box">
-                <input type="text" placeholder="Enter a domain to verify"/>
+                <input type="text" :placeholder="$t('Enter_to_verify')"/>
                 <div class="check_btn">{{ $t('CHECK') }}</div>
             </div>
         </div>
