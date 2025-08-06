@@ -10,7 +10,7 @@ export default defineConfig({
       "@":resolve(__dirname,"src")
     }
   },
-  base:"./",
+  base:"/site",
   server:{
     port:4000,
     open:true,
@@ -18,7 +18,7 @@ export default defineConfig({
     // https:true,
     proxy:{
       "/api":{
-        target:"https://43.198.73.116",
+        target:"https://vib888.com",
         changeOrigin:true,
         secure: false,
       }

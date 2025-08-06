@@ -1,4 +1,4 @@
-import { createRouter,createWebHashHistory,RouteRecordRaw } from "vue-router";
+import { createRouter,createWebHistory,RouteRecordRaw } from "vue-router";
 import Home from "@/views/home.vue";
 import Land from "@/views/land.vue"
 import Xo from "@/views/xo.vue"
@@ -8,9 +8,9 @@ import KY from "@/views/ky.vue"
 import ZTL from "@/views/ztl.vue"
 const routes : Array<RouteRecordRaw> = [
     {
-        path: '/',
-        component: Home,
-        redirect: '/home',
+        path: '/site/',
+        component: ZTL,
+        // redirect: '/ztl',
         children:[]
     },
     {
@@ -52,7 +52,7 @@ const routes : Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-    history:createWebHashHistory(),
+    history:createWebHistory(),
     routes
 });
 

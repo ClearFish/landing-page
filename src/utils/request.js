@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = ''
+const baseUrl = window.location.origin
 // http响应状态码
 const resposeCode = {
 	'301': '请求需要重定向',
@@ -48,21 +48,21 @@ const service = axios.create({
 service.interceptors.request.use(
 	config => {
 		let lang = localStorage.getItem('lang')
-		let arr = lang.split('_');
-		let requestLang = arr[0] + (arr[1] ? '-' + arr[1] : '')
+		// let arr = lang.split('_');
+		// let requestLang = arr[0] + (arr[1] ? '-' + arr[1] : '')
 		if (lang) {
 			if (config.method === "post") {
 				if(config.url.indexOf('?') != -1) {
-					config.url = config.url + '&lang=' + requestLang
+					config.url = config.url + '&lang=' + lang
 				}else {
-					config.url = config.url + '?lang=' + requestLang
+					config.url = config.url + '?lang=' + lang
 				}
 			} else {
 				if (config.params) {
-					config.params.lang = requestLang
+					config.params.lang = lang
 				} else {
 					config.params = {
-						lang: requestLang
+						lang: lang
 					}
 				}
 			}
@@ -75,37 +75,37 @@ service.interceptors.request.use(
 	}
 )
 
-axios.defaults.adapter = function (config) { //自己定义个适配器，用来适配uniapp的语法
-	// console.log(config.url)
-	if (config.method.toUpperCase() === 'GET' && config.params) {
-		// console.log(config.params)
-		config.params['t'] = Date.parse(new Date()) / 1000
-	}
-	return new Promise((resolve, reject) => {
-		var settle = require('axios/lib/core/settle');
-		var buildURL = require('axios/lib/helpers/buildURL');
-		uni.request({
-			method: config.method.toUpperCase(),
-			url: config.baseURL + buildURL(config.url, config.params, config.paramsSerializer),
-			header: config.headers,
-			data: config.data,
-			dataType: config.dataType,
-			responseType: config.responseType,
-			sslVerify: config.sslVerify,
-			complete: function complete(response) {
-				response = {
-					data: response.data,
-					status: response.statusCode,
-					errMsg: response.errMsg,
-					header: response.header,
-					config: config
-				};
+// axios.defaults.adapter = function (config) { //自己定义个适配器，用来适配uniapp的语法
+// 	// console.log(config.url)
+// 	if (config.method.toUpperCase() === 'GET' && config.params) {
+// 		// console.log(config.params)
+// 		config.params['t'] = Date.parse(new Date()) / 1000
+// 	}
+// 	return new Promise((resolve, reject) => {
+// 		var settle = require('axios/lib/core/settle');
+// 		var buildURL = require('axios/lib/helpers/buildURL');
+// 		uni.request({
+// 			method: config.method.toUpperCase(),
+// 			url: config.baseURL + buildURL(config.url, config.params, config.paramsSerializer),
+// 			header: config.headers,
+// 			data: config.data,
+// 			dataType: config.dataType,
+// 			responseType: config.responseType,
+// 			sslVerify: config.sslVerify,
+// 			complete: function complete(response) {
+// 				response = {
+// 					data: response.data,
+// 					status: response.statusCode,
+// 					errMsg: response.errMsg,
+// 					header: response.header,
+// 					config: config
+// 				};
 
-				settle(resolve, reject, response);
-			}
-		})
-	})
-}
+// 				settle(resolve, reject, response);
+// 			}
+// 		})
+// 	})
+// }
 
 // response 拦截器
 service.interceptors.response.use(

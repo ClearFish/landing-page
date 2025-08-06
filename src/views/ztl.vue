@@ -6,8 +6,8 @@
                 <img :src="US" alt="" class="lang" @click="showLangChose">
             </div>
             <div class="check_box">
-                <input type="text" :placeholder="$t('Enter_to_verify')"/>
-                <div class="check_btn">{{ $t('CHECK') }}</div>
+                <input type="text" v-model="urlValue" :placeholder="$t('Enter_to_verify')"/>
+                <div class="check_btn" @click="checkUrl">{{ $t('CHECK') }}</div>
             </div>
         </div>
         <div class="item_con">
@@ -17,9 +17,9 @@
             </div>
             <div class="web_lsits">
                 <div class="web_item" v-for="(item,index) in webLists" :key="index">
-                    <input type="text" v-model="item.name"/>
-                    <div class="check_btn install_btn">{{ $t('INSTALL') }}</div>
-                    <div class="check_btn">{{ $t('VISIT') }}</div>
+                    <input type="text" v-model="item.domain" @click="copyDomain(item)"/>
+                    <div class="check_btn install_btn" @click="toInstall(item)">{{ $t('INSTALL') }}</div>
+                    <div class="check_btn" @click="toVisit(item)">{{ $t('VISIT') }}</div>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
             <p class="title">{{ $t('word1') }}</p>
             <p class="sub_title">{{ $t('word2') }}</p>
             <div class="btn_box">
-                <div class="installc_btn">{{ $t('INSTALL_APP') }}</div>
+                <div class="installc_btn" @click="installApp">{{ $t('INSTALL_APP') }}</div>
                 <div class="installc_btn tutol_btn">{{ $t('tutorial') }}</div>
             </div>
         </div>
@@ -101,28 +101,27 @@
         </van-popup>
     </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import {onMounted, ref} from "vue"
 import Logo from "@/assets/ztl/logo.png"
 import US from "@/assets/ztl/US.svg"
 import YINDI from "@/assets/ztl/yindi.svg"
 import bell from "@/assets/ztl/bell.png"
 import { useI18n } from 'vue-i18n'
-import {getDomainLis,site} from "@/api"
+import {getDomainList,site,domainCheck} from "@/api/index.js"
+import { copyDomText } from "../common/copy.js"
+import { showToast } from 'vant';
 import axios from "axios"
 const { locale } = useI18n()
 const language = ref(locale.value)
-const webLists = ref([
-    {name:'ZTLGAME.cc',value:'ZTLGAME.cc'},
-    {name:'ZTLGAME.cc',value:'ZTLGAME.cc'},
-    {name:'ZTLGAME.cc',value:'ZTLGAME.cc'},
-    {name:'ZTLGAME.cc',value:'ZTLGAME.cc'},
-])
+const webLists:any = ref([])
+const siteVal:any = ref({})
 const show = ref(false)
 const langLists = ref([
     {icon:YINDI,title:'तिरंगा',value: 'yindi'},
     {icon:US,title:'English',value: 'en'},
 ])
+const urlValue = ref('')
 const showLangChose = ()=>{
     show.value = true
 }
@@ -135,14 +134,50 @@ const confirmLang = ()=>{
    show.value = false
 }
 const getList = async()=>{
-    // let params = {
-    //     agent_id:1,
-    // }
-    // let res = await axios.get('/api/site?lang=en-us')
-    let res = await site({lange:'en-us'})
+    let params = {
+        // agent_id:1,
+    }
+    // let res = await axios.get('/api/site/domainLis?agent_id=1')
+    let res = await getDomainList(params);
+    webLists.value = res.data
+}
+const getSite = async()=>{
+    let res = await site();
+    siteVal.value = res.data;
+}
+const toVisit = (item)=>{
+    window.open('https://'+item.domain,"_blank")
+}
+const copyDomain = (item:any)=>{
+     copyDomText(item.domain);
+     showToast("copy success")
+}
+const checkUrl = async()=>{
+    let params = {
+        agent_id:1,
+        domain:urlValue.value
+    }
+    let res = await domainCheck(params);
+    if(res.code == 1) {
+        showToast("success")
+    }else {
+        showToast("failed")
+    }
+
+}
+const installApp = ()=>{
+    const agent = navigator.userAgent;
+    const isAndroid = agent.indexOf('Android') > -1 || agent.indexOf('Adr') > -1;
+    const [androidUrl,iosUrl] = siteVal.value.app_download.split(',')
+    const jumpUrl = isAndroid ? androidUrl : iosUrl;
+    let a = document.createElement('a');
+    a.target = "_blank";
+    a.href = jumpUrl;
+    a.click();
 }
 onMounted(()=>{
     getList()
+    getSite()
 })
 </script>
 <style lang="scss" scoped>

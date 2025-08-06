@@ -26,6 +26,20 @@
                     <img src="@/assets/xo/jump_btn.png" alt="" class="btn_box">
                 </div>
             </div>
+            <div class="lange_box">
+                <img src="@/assets/xo/USA.svg" alt="" class="lang_icon">
+                <img src="@/assets/xo/trangle.svg" alt="" class="chose_icon">
+                <div class="select_icon">
+                    <div class="select_item">
+                        <img src="@/assets/xo/USA.svg" alt="" class="lang_icon">
+                        <p class="name">EN</p>
+                    </div>
+                    <div class="select_item">
+                        <img src="@/assets/xo/PH.svg" alt="" class="lang_icon">
+                        <p class="name">PH</p>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="project_box">
             <img src="@/assets/xo/project_title.png" alt="" class="title">
@@ -145,6 +159,7 @@
         padding-top: 10px;
         flex-direction: column;
         align-items: center;
+        position: relative;
         .logo {
             width: 277px;
             height: auto;
@@ -179,6 +194,51 @@
                 font-size: 12px;
                 color: #CE2323;
                 text-shadow: 0 1px 1px #FFEE72;
+            }
+        }
+        .lange_box {
+            position: absolute;
+            width: 40px;
+            height: 23px;
+            border-radius: 4px;
+            border: 1px solid #fff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            right: 10px;
+            top: 10px;
+            .lang_icon {
+                width: 14px;
+                height: 14px;
+            }
+            .chose_icon {
+                width: 6px;
+                height: 6px;
+            }
+            .select_icon {
+                width: 60px;
+                border: 1px solid #fff;
+                border-radius: 4px;
+                position: absolute;
+                top: 25px;
+                right: -2px;
+                .select_item {
+                    width: 100%;
+                    height: 23px;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0 6px;
+                    box-sizing: border-box;
+                    align-items: center;
+                    img {
+                        width: 14px;
+                        height: 14px;
+                    }
+                    .name {
+                        font-size: 12px;
+                        color: #fff;
+                    }
+                }
             }
         }
     }

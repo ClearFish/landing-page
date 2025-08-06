@@ -1,4 +1,4 @@
-import service from '@/utils/axios.js'
+import service from '@/utils/request.js'
 
 export function site(params) {
 	return service({
@@ -7,10 +7,17 @@ export function site(params) {
 		params
 	})
 }
-export function getDomainLis(params) {
+export function getDomainList(params) {
 	return service({
-		url: '/api/site/domainLis',
+		url: '/api/site/domainList',
 		method: 'get',
 		params
+	})
+}
+export function domainCheck(data) {
+	return service({
+		url: '/api/site/domainCheck',
+		method: 'post',
+		data
 	})
 }
