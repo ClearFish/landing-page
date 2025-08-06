@@ -15,19 +15,12 @@ export default defineConfig({
     port:4000,
     open:true,
     cors:true,
-    // // https:true,
+    // https:true,
     proxy:{
-      "/banks":{
-        target:"http://vnmag.lqqpay.com",
-        changeOrigin:true,
-      },
-      "/pay":{
-        target:"http://vnmag.lqqpay.com",
-        changeOrigin:true,
-      },
       "/api":{
-        target:"http://qr.lqqpay.com",
+        target:"https://43.198.73.116",
         changeOrigin:true,
+        secure: false,
       }
     }
   }

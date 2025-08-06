@@ -102,12 +102,14 @@
     </div>
 </template>
 <script setup>
-import {ref} from "vue"
+import {onMounted, ref} from "vue"
 import Logo from "@/assets/ztl/logo.png"
 import US from "@/assets/ztl/US.svg"
 import YINDI from "@/assets/ztl/yindi.svg"
 import bell from "@/assets/ztl/bell.png"
 import { useI18n } from 'vue-i18n'
+import {getDomainLis,site} from "@/api"
+import axios from "axios"
 const { locale } = useI18n()
 const language = ref(locale.value)
 const webLists = ref([
@@ -132,6 +134,16 @@ const confirmLang = ()=>{
    localStorage.setItem('lang', language.value);
    show.value = false
 }
+const getList = async()=>{
+    // let params = {
+    //     agent_id:1,
+    // }
+    // let res = await axios.get('/api/site?lang=en-us')
+    let res = await site({lange:'en-us'})
+}
+onMounted(()=>{
+    getList()
+})
 </script>
 <style lang="scss" scoped>
 @font-face {

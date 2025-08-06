@@ -1,12 +1,20 @@
 import axios from "axios";
 
-export const service = axios.create({
-    baseURL:''
+const service = axios.create({
+    baseURL:'',
+	timeout: 10000, // 请求超时时间
+	headers: {
+		'X-Requested-With': 'XMLHttpRequest',
+		'Content-Type': 'application/json',
+		'Accept': 'application/json'
+	}
 })
 
 service.interceptors.request.use(
-	function(error) {
-		// 对请求错误做些什么
+	config=>{
+		return config
+	},
+	error => {
 		console.log(error)
 		console.log('这里是请求错误')
 		return Promise.reject(error)
@@ -14,19 +22,9 @@ service.interceptors.request.use(
 )
 //响应拦截器
 service.interceptors.response.use(
-	res => {
-		// 在请求成功后的数据处理
-		if (res.status === 200) {
-			console.log(res.status)
-			console.log('这里是请求成功后')
- 
-			return res;
-		} else {
-			console.log(res.status)
-			console.log('这里是请求失败后')
-			return res;
-		}
- 
+	response => {
+		const res = response.data;
+		return res
 	},
 	err => {
 		// 在响应错误的时候的逻辑处理
@@ -35,3 +33,5 @@ service.interceptors.response.use(
 		return Promise.reject(err)
     }
 )
+
+export default service
