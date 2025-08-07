@@ -8,9 +8,9 @@ import KY from "@/views/ky.vue"
 import ZTL from "@/views/ztl.vue"
 const routes : Array<RouteRecordRaw> = [
     {
-        path: '/site/',
+        path: '/',
         component: ZTL,
-        // redirect: '/ztl',
+        redirect: '/site',
         children:[]
     },
     {
@@ -44,7 +44,7 @@ const routes : Array<RouteRecordRaw> = [
         component:KY
     },
     {
-        path:"/ztl",
+        path:"/site",
         name:"ztl",
         component:ZTL
         
