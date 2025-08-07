@@ -21,6 +21,11 @@ export default defineConfig({
         target:"https://vib888.com",
         changeOrigin:true,
         secure: false,
+      },
+      "/addons":{
+        target:"https://vib888.com",
+        changeOrigin:true,
+        secure: false,
       }
     }
   }

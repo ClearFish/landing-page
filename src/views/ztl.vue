@@ -29,7 +29,7 @@
                 <p class="sub_title">{{ $t('word2') }}</p>
                 <div class="btn_box">
                     <div class="installc_btn" @click="installApp">{{ $t('INSTALL_APP') }}</div>
-                    <div class="installc_btn tutol_btn">{{ $t('tutorial') }}</div>
+                    <div class="installc_btn tutol_btn" @click="toChat">{{ $t('concact') }}</div>
                 </div>
             </div>
             <div class="item_con">
@@ -116,6 +116,26 @@
                    </div>
                 </div>
             </van-popup>
+            <van-popup 
+                    class="chat_pop" 
+                    :show="showChat" 
+                    close-on-click-overlay 
+                    @close="showChat=false" 
+                    position="bottom"
+                    custom-style="width: 100%"
+                >
+                <div class="chat_box">
+                    <iframe 
+                        :src="chatUrl" 
+                        allow="fullscreen *"
+                        frameborder="0"
+                        width="100%"
+                        height="100%"
+                        id="chatIFrams"
+                        class="iframe_box"
+                    ></iframe>
+                </div>
+            </van-popup>
         </div>
     </div>
 </template>
@@ -126,12 +146,11 @@ import US from "@/assets/ztl/US.svg"
 import YINDI from "@/assets/ztl/yindi.svg"
 import bell from "@/assets/ztl/bell.png"
 import { useI18n } from 'vue-i18n'
-import {getDomainList,site,domainCheck} from "@/api/index.js"
+import {getDomainList,site,domainCheck,getIMGuest} from "@/api/index.js"
 import { copyDomText } from "../common/copy.js"
 import LogoC from "@/assets/ztl/logo_c.png"
 import Vertify from "@/assets/ztl/vertify.png"
 import { showToast } from 'vant';
-import axios from "axios"
 const { locale } = useI18n()
 const language = ref(locale.value)
 const webLists:any = ref([])
@@ -143,6 +162,8 @@ const langLists = ref([
 ])
 const urlValue = ref('')
 const showCheck = ref(false)
+const chatUrl = ref('')
+const showChat = ref(false)
 const showLangChose = ()=>{
     show.value = true
 }
@@ -158,7 +179,6 @@ const getList = async()=>{
     let params = {
         // agent_id:1,
     }
-    // let res = await axios.get('/api/site/domainLis?agent_id=1')
     let res = await getDomainList(params);
     webLists.value = res.data
 }
@@ -167,7 +187,10 @@ const getSite = async()=>{
     siteVal.value = res.data;
 }
 const toVisit = (item)=>{
-    window.open('https://'+item.domain,"_blank")
+    window.open('https://'+item.domain+window.location.search,"_blank")
+}
+const toInstall = (item)=>{
+    window.open('https://'+item.pwa+window.location.search,"_blank")
 }
 const copyDomain = (item:any)=>{
      copyDomText(item.domain);
@@ -197,18 +220,24 @@ const installApp = ()=>{
     a.href = jumpUrl;
     a.click();
 }
-const toInstall = (item)=>{
 
-}
 const toVisitCheck = ()=>{
-    window.open('https://'+urlValue.value,"_blank")
+    window.open('https://'+urlValue.value+window.location.search,"_blank")
 }
 const toInstallCheck = () =>{
 
 }
+const toChat = ()=>{
+    showChat.value = true
+}
+const getChatUrl = async()=>{
+    let res = await getIMGuest();
+    chatUrl.value = res.data.link
+}
 onMounted(()=>{
     getList()
     getSite()
+    getChatUrl()
 })
 </script>
 <style lang="scss" scoped>
@@ -277,6 +306,7 @@ onMounted(()=>{
             justify-content: space-between;
             font-size: 16px;
             gap: 8px;
+            box-sizing: border-box;
             input {
                 flex: 1;
                 height: 46px;
@@ -589,6 +619,19 @@ onMounted(()=>{
             }
         }
     }
+    :deep(.chat_pop) {
+        width: 100%;
+        .chat_box {
+            height: 80vh;
+            .iframe_box {
+                height: 80vh;
+                position: fixed;
+                z-index: 99999;
+                bottom:0;
+                left: 0;
+            }
+        }
+    }
 }
 @media screen and (min-width: 600px) {
     .big_box {
@@ -665,6 +708,12 @@ onMounted(()=>{
                     }
                 }
             }
+        }
+        :deep(.chat_pop) {
+            max-width: 600px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
     }
 }

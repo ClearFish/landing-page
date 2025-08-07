@@ -21,3 +21,11 @@ export function domainCheck(data) {
 		data
 	})
 }
+// 游客访问聊天室
+export function getIMGuest(params) {
+	return service({
+		url: '/addons/gameapi/im/Guest',
+		method: 'get',
+		params
+	})
+}
