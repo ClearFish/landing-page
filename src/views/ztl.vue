@@ -18,7 +18,7 @@
                 </div>
                 <div class="web_lsits">
                     <div class="web_item" v-for="(item,index) in webLists" :key="index">
-                        <input type="text" v-model="item.domain" @click="copyDomain(item)"/>
+                        <input type="text" v-model="item.domain" @click="copyDomain(item)" readonly/>
                         <div class="check_btn install_btn" @click="toInstall(item)">{{ $t('INSTALL') }}</div>
                         <div class="check_btn" @click="toVisit(item)">{{ $t('VISIT') }}</div>
                     </div>
@@ -100,6 +100,22 @@
                     </div>
                 </div>
             </van-popup>
+            <van-popup :show="showCheck" round close-on-click-overlay @close="showCheck=false">
+                <div class="vertify_box">
+                   <div class="top">
+                        <img :src="LogoC" alt="" class="logo">
+                        <div class="vertify">
+                            <img :src="Vertify" alt="" class="v_logo">
+                            <p class="word">{{ $t('Verified_Official_Domain') }}</p>
+                        </div>
+                        <div class="values_box">{{ urlValue }}</div>
+                   </div>
+                   <div class="bottom_btn">
+                       <div class="check_btn" @click="toVisitCheck">{{ $t('VISIT') }}</div>
+                        <div class="check_btn install_btn" @click="toInstallCheck">{{ $t('INSTALL') }}</div>
+                   </div>
+                </div>
+            </van-popup>
         </div>
     </div>
 </template>
@@ -112,6 +128,8 @@ import bell from "@/assets/ztl/bell.png"
 import { useI18n } from 'vue-i18n'
 import {getDomainList,site,domainCheck} from "@/api/index.js"
 import { copyDomText } from "../common/copy.js"
+import LogoC from "@/assets/ztl/logo_c.png"
+import Vertify from "@/assets/ztl/vertify.png"
 import { showToast } from 'vant';
 import axios from "axios"
 const { locale } = useI18n()
@@ -124,6 +142,7 @@ const langLists = ref([
     {icon:US,title:'English',value: 'en'},
 ])
 const urlValue = ref('')
+const showCheck = ref(false)
 const showLangChose = ()=>{
     show.value = true
 }
@@ -161,7 +180,8 @@ const checkUrl = async()=>{
     }
     let res = await domainCheck(params);
     if(res.code == 1) {
-        showToast("success")
+        // showToast("success")
+        showCheck.value = true
     }else {
         showToast("failed")
     }
@@ -178,6 +198,12 @@ const installApp = ()=>{
     a.click();
 }
 const toInstall = (item)=>{
+
+}
+const toVisitCheck = ()=>{
+    window.open('https://'+urlValue.value,"_blank")
+}
+const toInstallCheck = () =>{
 
 }
 onMounted(()=>{
@@ -201,16 +227,32 @@ onMounted(()=>{
 .big_box {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(180deg, #0454FD 0%, #D3F3FF 100%);
+    background: #D3F3FF;
     padding: 0 16px;
     box-sizing: border-box;
     padding-bottom: 34px;
+    position: relative;
+    &::before {
+        content: "";
+        width: 100%;
+        height: 260px;
+        background:url("@/assets/ztl/top_bg.png") no-repeat center;
+        background-size: 100% 100%;
+        background-position-y: -15px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
     .container {
         max-width: 600px;
         margin: 0 auto;
+        position: relative;
+        z-index: 2;
     }
     .top_heaer {
         padding-top: 35px;
+        
         .top {
             display: flex;
             justify-content: space-between;
@@ -250,8 +292,10 @@ onMounted(()=>{
             .check_btn {
                 width: 74px;
                 height: 40px;
-                background-image: linear-gradient(180deg, #3487F6 0%, #5EAFEF 100%);
-                border-radius: 20px;
+                // background-image: linear-gradient(180deg, #3487F6 0%, #5EAFEF 100%);
+                // border-radius: 20px;
+                background: url("@/assets/ztl/check_btn.png") no-repeat center;
+                background-size: 100% 100%;
                 color: #fff;
                 text-align: center;
                 line-height: 40px;
@@ -312,8 +356,10 @@ onMounted(()=>{
                 .check_btn {
                     width: 66px;
                     height: 40px;
-                    background-image: linear-gradient(180deg, #3487F6 0%, #5EAFEF 100%);
-                    border-radius: 20px;
+                    // background-image: linear-gradient(180deg, #3487F6 0%, #5EAFEF 100%);
+                    // border-radius: 20px;
+                    background: url("@/assets/ztl/check_btn.png") no-repeat center;
+                    background-size: 100% 100%;
                     color: #fff;
                     text-align: center;
                     line-height: 40px;
@@ -322,7 +368,9 @@ onMounted(()=>{
                     flex-shrink: 0;
                 }
                 .install_btn {
-                    background-image: linear-gradient(180deg, #2CE482 0%, #28E283 100%);
+                    // background-image: linear-gradient(180deg, #2CE482 0%, #28E283 100%);
+                    background: url("@/assets/ztl/install_btn.png") no-repeat center;
+                    background-size: 100% 100%;
                 }
             }
         }
@@ -348,8 +396,10 @@ onMounted(()=>{
             .installc_btn {
                 width: 140px;
                 height: 40px;
-                background-image: linear-gradient(180deg, #3487F6 0%, #5EAFEF 100%);
-                border-radius: 20px;
+                // background-image: linear-gradient(180deg, #3487F6 0%, #5EAFEF 100%);
+                // border-radius: 20px;
+                background: url("@/assets/ztl/big_install.png") no-repeat center;
+                background-size: 100% 100%;
                 color: #fff;
                 font-family: Archive;
                 font-size: 14px;
@@ -358,7 +408,9 @@ onMounted(()=>{
                 line-height: 40px;
             }
             .tutol_btn {
-                background-image: linear-gradient(180deg, #2CE482 0%, #28E283 100%);
+                // background-image: linear-gradient(180deg, #2CE482 0%, #28E283 100%);
+                background: url("@/assets/ztl/big_green.png") no-repeat center;
+                background-size: 100% 100%;
             }
         }
         .word_title {
@@ -476,9 +528,74 @@ onMounted(()=>{
             }
         }
     }
+    .vertify_box {
+        padding: 25px 16px;
+        box-sizing: border-box;
+        .top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .logo {
+                width:106px;
+                height: 20px;
+            }
+            .vertify {
+                display: flex;
+                gap:10px;
+                align-items: center;
+                font-weight: 700;
+                font-size: 18px;
+                color: #000000;
+                font-family: DIN-BOLD;
+                margin-top: 16px;
+                .v_logo {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+            .values_box {
+                width:100%;
+                height: 40px;
+                border: 1px solid #277EFF;
+                border-radius: 6px;
+                color: #277EFF;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 10px;
+            }
+        }
+        .bottom_btn {
+            display: flex;
+            justify-self: center;
+            align-items: center;
+            margin-top: 15px;
+            gap: 24px;
+            .check_btn {
+                width: 140px;
+                height: 40px;
+                background: url("@/assets/ztl/big_install.png") no-repeat center;
+                background-size: 100% 100%;
+                color: #fff;
+                font-family: Archive;
+                font-size: 14px;
+                color: #FFFFFF;
+                text-align: center;
+                line-height: 40px;
+            }
+            .install_btn {
+                background: url("@/assets/ztl/big_green.png") no-repeat center;
+                background-size: 100% 100%;
+            }
+        }
+    }
 }
 @media screen and (min-width: 600px) {
     .big_box {
+        &::before {
+            height: 360px;
+            background-position-y: -24px;
+        }
         .container {
             .top_heaer {
                 .top {
@@ -494,7 +611,9 @@ onMounted(()=>{
                 .check_box {
                     .check_btn {
                         cursor: pointer;
-                        width: 120px;
+                        width: 140px;
+                        background: url("@/assets/ztl/big_install.png") no-repeat center;
+                        background-size: 100% 100%;
                         &:hover {
                             transform: scale(1.02);
                         }
@@ -517,11 +636,18 @@ onMounted(()=>{
                             cursor: pointer;
                         }
                         .check_btn  {
-                            width: 120px;
+                            width: 140px;
                             cursor: pointer;
+                            background: url("@/assets/ztl/big_install.png") no-repeat center;
+                            background-size: 100% 100%;
+                            font-size: 14px;
                             &:hover {
                                 transform: scale(1.02);
                             }
+                        }
+                        .install_btn {
+                            background: url("@/assets/ztl/big_green.png") no-repeat center;
+                            background-size: 100% 100%;
                         }
                     }
                 }
@@ -529,6 +655,16 @@ onMounted(()=>{
         }
         :deep(.van-popup) {
             max-width: 580px;
+        }
+        .vertify_box {
+            .bottom_btn {
+                .check_btn {
+                    cursor: pointer;
+                     &:hover {
+                        transform: scale(1.02);
+                    }
+                }
+            }
         }
     }
 }
