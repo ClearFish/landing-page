@@ -196,6 +196,7 @@ const copyDomain = (item:any)=>{
      copyDomText(item.domain);
      showToast("copy success")
 }
+const checkedVal:any = ref({})
 const checkUrl = async()=>{
     let params = {
         agent_id:1,
@@ -204,7 +205,8 @@ const checkUrl = async()=>{
     let res = await domainCheck(params);
     if(res.code == 1) {
         // showToast("success")
-        showCheck.value = true
+        showCheck.value = true;
+        checkedVal.value = res.data
     }else {
         showToast("failed")
     }
@@ -225,7 +227,7 @@ const toVisitCheck = ()=>{
     window.open('https://'+urlValue.value+window.location.search,"_blank")
 }
 const toInstallCheck = () =>{
-
+    window.open('https://'+checkedVal.value.pwa+window.location.search,"_blank")
 }
 const toChat = ()=>{
     showChat.value = true
