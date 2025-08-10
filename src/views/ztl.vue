@@ -199,7 +199,7 @@ const copyDomain = (item:any)=>{
 const checkedVal:any = ref({})
 const checkUrl = async()=>{
     let params = {
-        agent_id:1,
+        // agent_id:1,
         domain:urlValue.value
     }
     let res = await domainCheck(params);
