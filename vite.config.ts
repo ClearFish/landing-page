@@ -10,7 +10,8 @@ export default defineConfig({
       "@":resolve(__dirname,"src")
     }
   },
-  base:"/site",
+  // base:"/site",
+  base:'/',
   server:{
     port:4000,
     open:true,
@@ -18,7 +19,7 @@ export default defineConfig({
     // https:true,
     proxy:{
       "/api":{
-        target:"https://vib888.com",
+        target:"https://ztl.games",
         changeOrigin:true,
         secure: false,
       },

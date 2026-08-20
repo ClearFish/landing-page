@@ -6,11 +6,19 @@ import Google from "@/views/googleDownload.vue"
 import Jdbvip from "@/views/jdbvip.vue"
 import KY from "@/views/ky.vue"
 import ZTL from "@/views/ztl.vue"
+import VNX from "@/views/vnx.vue"
+
 const routes : Array<RouteRecordRaw> = [
+    // {
+    //     path: '/',
+    //     component: ZTL,
+    //     redirect: '/site',
+    //     children:[]
+    // },
     {
         path: '/',
-        component: ZTL,
-        redirect: '/site',
+        component: VNX,
+        redirect: '/vnx',
         children:[]
     },
     {
@@ -47,7 +55,11 @@ const routes : Array<RouteRecordRaw> = [
         path:"/site",
         name:"ztl",
         component:ZTL
-        
+    },
+    {
+        path:"/vnx",
+        name:"vnx",
+        component:VNX
     }
 ]
 
