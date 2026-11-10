@@ -615,7 +615,7 @@ onMounted(()=>{
                 .top {
                     .logo {
                         width: 280px;
-                        height: 52px;
+                        height: auto;
                     }
                     .lang {
                         width: 40px;

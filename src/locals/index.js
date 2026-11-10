@@ -31,7 +31,7 @@ const messages = {
 const i18n = createI18n({
   legacy: false,          // 禁用Vue2兼容模式
   locale:getLocalLanguage(),          // 默认语言
-  fallbackLocale: 'vi',   // 回退语言
+  fallbackLocale: 'yindi',   // 回退语言
   globalInjection: true,  // 全局注入$t方法
   messages
 })
@@ -47,7 +47,7 @@ function getLocalLanguage() {
   } else if (browserMain === "vi" && locales.includes("vi")){
     return "vi";
   } else {
-    return "en";
+    return "yindi";
   }
 }
 export default i18n
