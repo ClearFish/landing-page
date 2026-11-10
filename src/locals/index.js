@@ -3,11 +3,30 @@ import en from './en.json'
 import yindi from './yindi.json'
 import vi from './vi.json'
 import zh from "./zh.json"
+import bn from "./bn.json"
+import gu from "./gu.json"
+import kn from "./kn.json"
+import ml from "./ml.json"
+import mr from "./mr.json"
+import or from "./or.json"
+import ta from "./ta.json"
+import te from "./te.json"
+import ur from "./ur.json"
+
 const messages = {
   en,
   yindi,
   vi,
-  zh
+  zh,
+  bn,
+  gu,
+  kn,
+  ml,
+  mr,
+  or,
+  ta,
+  te,
+  ur
 }
 const i18n = createI18n({
   legacy: false,          // 禁用Vue2兼容模式

@@ -19,7 +19,7 @@ export default defineConfig({
     // https:true,
     proxy:{
       "/api":{
-        target:"https://ztl.games",
+        target:"https://links-rs365.pages.dev",
         changeOrigin:true,
         secure: false,
       },

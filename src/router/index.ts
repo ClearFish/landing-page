@@ -7,20 +7,21 @@ import Jdbvip from "@/views/jdbvip.vue"
 import KY from "@/views/ky.vue"
 import ZTL from "@/views/ztl.vue"
 import VNX from "@/views/vnx.vue"
+import rs356 from "@/views/rs356.vue"
 
 const routes : Array<RouteRecordRaw> = [
-    // {
-    //     path: '/',
-    //     component: ZTL,
-    //     redirect: '/site',
-    //     children:[]
-    // },
     {
         path: '/',
-        component: VNX,
-        redirect: '/vnx',
+        component: ZTL,
+        redirect: '/rs356',
         children:[]
     },
+    // {
+    //     path: '/',
+    //     component: VNX,
+    //     redirect: '/vnx',
+    //     children:[]
+    // },
     {
         path:"/home",
         name:"Home",
@@ -60,7 +61,12 @@ const routes : Array<RouteRecordRaw> = [
         path:"/vnx",
         name:"vnx",
         component:VNX
-    }
+    },
+    {
+        path:"/rs356",
+        name:"rs356",
+        component:rs356
+    },
 ]
 
 const router = createRouter({
