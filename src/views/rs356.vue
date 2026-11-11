@@ -122,13 +122,13 @@ const webLists:any = ref([
     rs365.biz
 rs365.cc
     */
+    // {
+    //     domain:'rs365.in',
+    //     pwa:'rs365.in',
+    // },
     {
-        domain:'rs365.in',
-        pwa:'rs365.in',
-    },
-    {
-        domain:'rs365.club',
-        pwa:'rs365.club',
+        domain:'rs365.cc',
+        pwa:'rs365.cc',
     },
     {
         domain:'rs365.bet',
@@ -139,9 +139,9 @@ rs365.cc
         pwa:'rs365.biz',
     },
     {
-        domain:'rs365.cc',
-        pwa:'rs365.cc',
-    }
+        domain:'rs365.club',
+        pwa:'rs365.club',
+    },
 ])
 const siteVal:any = ref({})
 const show = ref(false)
